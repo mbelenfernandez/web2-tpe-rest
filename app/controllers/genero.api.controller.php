@@ -2,7 +2,7 @@
     require_once 'app/controllers/api.controller.php';
     require_once 'app/models/genero.model.php';
 
-    class TaskApiController extends ApiController {
+    class GeneroApiController extends ApiController {
         private $model;
 
         function __construct() {
