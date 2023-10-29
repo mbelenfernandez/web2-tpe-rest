@@ -11,7 +11,7 @@
     $router->addRoute('generos/:ID', 'GET',    'GeneroApiController', 'get'   );
     $router->addRoute('generos/:ID', 'PUT',    'GeneroApiController', 'update');
     
-    $router->addRoute('generos/:ID/:subrecurso', 'GET',    'TaskApiController', 'get'   );
+    $router->addRoute('generos/:ID/:subrecurso', 'GET',    'GeneroApiController', 'get'   );
     
 
     $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
