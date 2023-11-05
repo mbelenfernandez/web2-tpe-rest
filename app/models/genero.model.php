@@ -30,10 +30,10 @@ class GeneroModel
         return $genero;
     }
 
-    function getGenerosOrderBy($field, $order)
+    function getGenerosOrderBy($order)
     {
-        $query = $this->db->prepare('SELECT * FROM genero ORDER BY ? ?');
-        $query->execute([$field, $order]);
+        $query = $this->db->prepare('SELECT * FROM genero ORDER BY descripcion ?');
+        $query->execute([$order]);
 
         $generos = $query->fetchAll(PDO::FETCH_OBJ);
 

@@ -21,8 +21,7 @@
                         switch ($params[':subrecurso']) {
                             case 'descripcion':
                                 $this->view->response($genero[0]->descripcion, 200);
-                                break;
-                                
+                                break;   
                             default:
                             $this->view->response(
                                 'El género no contiene '.$params[':subrecurso'].'.'
