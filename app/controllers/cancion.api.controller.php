@@ -36,19 +36,33 @@ class CancionApiController extends ApiController
                             break;
                         default:
                             $this->view->response(
-                                'La canción no contiene ' . $params[':subrecurso'] . '.',
-                                404
-                            );
+                                'La canción no contiene ' . $params[':subrecurso'] . '.', 404);
                             break;
                     }
                 } else
                     $this->view->response($cancion, 200);
             } else {
                 $this->view->response(
-                    'La canción con el id ' . $params[':ID'] . ' no existe.',
-                    404
-                );
+                    'La canción con el id ' . $params[':ID'] . ' no existe.', 404);
             }
+        }
+    }
+
+    function update($params = []) {
+        $id = $params[':ID'];
+        $cancion = $this->model->getCancionById($id);
+
+        if($cancion) {
+            $body = $this->getData();
+            $titulo = $body->titulo;
+            $artista = $body->artista;
+            $letra = $body->letra;
+            $duracion = $body->duracion;
+            $id_genero = $body->id_genero;
+            $this->model->updateCancion($id, $titulo, $artista, $letra, $duracion, $id_genero);
+            $this->view->response('El comentario con id '.$id.' ha sido modificado.', 200);
+        } else {
+            $this->view->response('El comentario con id '.$id.' no existe.', 404);
         }
     }
 }

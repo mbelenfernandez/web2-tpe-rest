@@ -81,15 +81,9 @@ class CancionModel
         $query->execute([$id]);
     }
 
-    function updateCancion($id, $titulo, $artista, $duracion, $id_genero)
+    function updateCancion($id, $titulo, $artista, $letra, $duracion, $id_genero)
     {
-        $query = $this->db->prepare('UPDATE cancion SET titulo=?, artista=?, duracion=?, id_genero=? WHERE id_cancion=?');
-        $query->execute([$titulo, $artista, $duracion, $id_genero, $id]);
-    }
-
-    function updateLetra($id, $letra)
-    {
-        $query = $this->db->prepare('UPDATE cancion SET letra=? WHERE id_cancion=?');
-        $query->execute([$letra, $id]);
+        $query = $this->db->prepare('UPDATE cancion SET titulo=?, artista=?, letra=?, duracion=?, id_genero=? WHERE id_cancion=?');
+        $query->execute([$titulo, $artista, $letra, $duracion, $id_genero, $id]);
     }
 }

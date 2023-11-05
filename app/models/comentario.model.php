@@ -11,6 +11,16 @@ class ComentarioModel
         $this->db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
     }
 
+    function getComentario($id)
+    {
+        $query = $this->db->prepare('SELECT * FROM comentario WHERE id_comentario=?');
+        $query->execute([$id]);
+
+        $comentario = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $comentario;
+    }
+
     function getComentariosByIdCancion($id)
     {
         $query = $this->db->prepare('SELECT * FROM comentario c WHERE c.id_cancion = ? order by id_comentario ASC');
@@ -38,4 +48,9 @@ class ComentarioModel
         return $this->db->lastInsertId();
     }
 
+    function updateComentario($id, $fecha, $descripcion, $puntaje)
+    {
+        $query = $this->db->prepare('UPDATE comentario SET fecha=?, descripcion=?, puntaje=? WHERE id_comentario=?');
+        $query->execute([$fecha, $descripcion, $puntaje, $id]);
+    }
 }

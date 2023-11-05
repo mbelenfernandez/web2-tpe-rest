@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4c1283c6-7cd0-4175-b3cd-30b6a5689138",
+		"_postman_id": "cc928e16-713d-4dd2-8d0d-7810cf0b0e0d",
 		"name": "web2-tpe-rest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30782816",
-		"_collection_link": "https://warped-crater-401975.postman.co/workspace/web2~30af50d5-1472-4c79-8dbb-f7af5452203d/collection/30782816-4c1283c6-7cd0-4175-b3cd-30b6a5689138?action=share&source=collection_link&creator=30782816"
+		"_exporter_id": "30802359"
 	},
 	"item": [
 		{
@@ -16,13 +15,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos",
+							"raw": "{{urlBase}}/api/generos",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos"
 							]
@@ -36,13 +33,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos/?sort=descripcion&order=asc",
+							"raw": "{{urlBase}}/api/generos/?sort=descripcion&order=asc",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos",
 								""
@@ -71,13 +66,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos/1",
+							"raw": "{{urlBase}}/api/generos/1",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos",
 								"1"
@@ -92,13 +85,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos?pending=true",
+							"raw": "{{urlBase}}/api/generos?pending=true",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos"
 							],
@@ -118,13 +109,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos/4",
+							"raw": "{{urlBase}}{/api/generos/4",
 							"host": [
-								"localhost"
+								"{{urlBase}}{"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos",
 								"4"
@@ -143,13 +132,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos/1",
+							"raw": "{{urlBase}}/api/generos/1",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos",
 								"1"
@@ -171,13 +158,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos/1/descripcion",
+							"raw": "{{urlBase}}/api/generos/1/descripcion",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos",
 								"1",
@@ -200,13 +185,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/generos?page=1&size=2",
+							"raw": "{{urlBase}}/api/generos?page=1&size=2",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"generos"
 							],
@@ -235,13 +218,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones",
+							"raw": "{{urlBase}}/api/canciones",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones"
 							]
@@ -255,13 +236,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones/?sort=titulo&order=asc",
+							"raw": "{{urlBase}}/api/canciones/?sort=titulo&order=asc",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones",
 								""
@@ -290,13 +269,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
+							"raw": "{{urlBase}}/api/canciones/1",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones",
 								"1"
@@ -311,13 +288,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones?pending=true",
+							"raw": "{{urlBase}}/api/canciones?pending=true",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones"
 							],
@@ -337,13 +312,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
+							"raw": "{{urlBase}}/api/canciones/1",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones",
 								"1"
@@ -362,13 +335,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
+							"raw": "{{urlBase}}/api/canciones/1",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones",
 								"1"
@@ -390,13 +361,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1/descripcion",
+							"raw": "{{urlBase}}/api/canciones/1/descripcion",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones",
 								"1",
@@ -419,13 +388,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/canciones?page=1&size=2",
+							"raw": "{{urlBase}}/api/canciones?page=1&size=2",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"canciones"
 							],
@@ -458,13 +425,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/comentarios",
+							"raw": "{{urlBase}}/api/comentarios",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"comentarios"
 							]
@@ -478,13 +443,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/comentarios/1",
+							"raw": "{{urlBase}}/api/comentarios/1",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"comentarios",
 								"1"
@@ -503,13 +466,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/comentarios/1",
+							"raw": "{{urlBase}}/api/comentarios/1",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"comentarios",
 								"1"
@@ -536,13 +497,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost/web2/web2-tpe-rest/api/token",
+							"raw": "{{urlBase}}/api/token",
 							"host": [
-								"localhost"
+								"{{urlBase}}"
 							],
 							"path": [
-								"web2",
-								"web2-tpe-rest",
 								"api",
 								"token"
 							]

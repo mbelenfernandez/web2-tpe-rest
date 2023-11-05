@@ -53,4 +53,20 @@ class ComentarioApiController extends ApiController
             }
         }
     }
+
+    function update($params = []) {
+        $id = $params[':ID'];
+        $comentario = $this->model->getComentario($id);
+
+        if($comentario) {
+            $body = $this->getData();
+            $fecha = $body->fecha;
+            $descripcion = $body->descripcion;
+            $puntaje = $body->puntaje;
+            $this->model->updateComentario($id, $fecha, $descripcion, $puntaje);
+            $this->view->response('El comentario con id '.$id.' ha sido modificado.', 200);
+        } else {
+            $this->view->response('El comentario con id '.$id.' no existe.', 404);
+        }
+    }
 }

@@ -67,7 +67,6 @@
                 $body = $this->getData();
                 $descripcion = $body->descripcion;
                 $this->model->updateGenero($id, $descripcion);
-
                 $this->view->response('El género con id '.$id.' ha sido modificado.', 200);
             } else {
                 $this->view->response('El género con id '.$id.' no existe.', 404);
