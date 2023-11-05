@@ -48,6 +48,20 @@ class CancionApiController extends ApiController
         }
     }
 
+    
+    function create($params = []) {
+        $body = $this->getData();
+        $titulo = $body->titulo;
+        $artista = $body->artista;
+        $duracion = $body->duracion;
+        $letra = $body->letra;
+        $id_genero = $body->id_genero;
+
+        $id = $this->model->insertCancion($titulo, $artista, $duracion, $letra, $id_genero);
+
+        $this->view->response('La canción fue insertada con el id '.$id, 201);
+    }
+    
     function update($params = []) {
         $id = $params[':ID'];
         $cancion = $this->model->getCancionById($id);

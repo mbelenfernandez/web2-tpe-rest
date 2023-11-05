@@ -54,6 +54,18 @@ class ComentarioApiController extends ApiController
         }
     }
 
+    
+    function create($params = []) {
+        $body = $this->getData();
+        $fecha = $body->fecha;
+        $descripcion = $body->descripcion;
+        $puntaje = $body->puntaje;
+        $id_cancion = $body->id_cancion;
+        $id = $this->model->insertComentario($fecha, $descripcion, $puntaje, $id_cancion);
+
+        $this->view->response('El comentario fue insertado con el id '.$id, 201);
+    }
+    
     function update($params = []) {
         $id = $params[':ID'];
         $comentario = $this->model->getComentario($id);

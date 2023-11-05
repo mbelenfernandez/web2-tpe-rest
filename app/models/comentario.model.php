@@ -43,7 +43,7 @@ class ComentarioModel
   
     function insertComentario($fecha, $descripcion, $puntaje, $id_cancion)
     {
-        $query = $this->db->prepare('INSERT INTO cancion (fecha, descripcion, puntaje, id_cancion) VALUES(?,?,?,?)');
+        $query = $this->db->prepare('INSERT INTO comentario (fecha, descripcion, puntaje, id_cancion) VALUES(?,?,?,?)');
         $query->execute([$fecha, $descripcion, $puntaje, $id_cancion]);
         return $this->db->lastInsertId();
     }
