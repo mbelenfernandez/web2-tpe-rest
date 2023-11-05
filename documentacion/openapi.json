@@ -1,0 +1,165 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Géneros Musicales",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost/web2/web2-tpe-rest/api"
+    }
+  ],
+  "paths": {
+    "/generos": {
+      "get": {
+        "summary": "Obtener lista de géneros musicales",
+        "responses": {
+          "200": {
+            "description": "Lista de géneros musicales obtenida exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Genero"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear un nuevo género musical",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Género musical creado exitosamente"
+          },
+          "400": {
+            "description": "Solicitud incorrecta"
+          }
+        }
+      }
+    },
+    "/generos/{id}": {
+      "get": {
+        "summary": "Obtener información de un género musical por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Información del género musical obtenida exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Genero"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Género musical no encontrado"
+          }
+        }
+      },
+      "put": {
+        "summary": "Actualizar información de un género musical por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Información del género musical actualizada exitosamente"
+          },
+          "400": {
+            "description": "Solicitud incorrecta"
+          },
+          "404": {
+            "description": "Género musical no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Eliminar un género musical por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Género musical eliminado exitosamente"
+          },
+          "404": {
+            "description": "Género musical no encontrado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Genero": {
+        "type": "object",
+        "properties": {
+          "id_genero": {
+            "type": "integer"
+          },
+          "descripcion": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

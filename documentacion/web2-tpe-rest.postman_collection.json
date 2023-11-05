@@ -1,0 +1,556 @@
+{
+	"info": {
+		"_postman_id": "4c1283c6-7cd0-4175-b3cd-30b6a5689138",
+		"name": "web2-tpe-rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30782816",
+		"_collection_link": "https://warped-crater-401975.postman.co/workspace/web2~30af50d5-1472-4c79-8dbb-f7af5452203d/collection/30782816-4c1283c6-7cd0-4175-b3cd-30b6a5689138?action=share&source=collection_link&creator=30782816"
+	},
+	"item": [
+		{
+			"name": "generos",
+			"item": [
+				{
+					"name": "/generos (J)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos/?sort=descripcion&order=asc (J)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/?sort=descripcion&order=asc",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos",
+								""
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "descripcion"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos (J)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos?pending=true (B)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos?pending=true",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos"
+							],
+							"query": [
+								{
+									"key": "pending",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos/:id (B)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/4",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos/:id (B)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos/:id/:subrecurso (O)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/1/descripcion",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos",
+								"1",
+								"descripcion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos?page=1&size=2 (O)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/generos?page=1&size=2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"generos"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "canciones",
+			"item": [
+				{
+					"name": "/canciones (J)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones/?sort=titulo&order=asc (J)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/?sort=titulo&order=asc",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones",
+								""
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "titulo"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones (J)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones?pending=true (B)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones?pending=true",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones"
+							],
+							"query": [
+								{
+									"key": "pending",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones/:id (B)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones/:id (B)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones/:id/:subrecurso (O)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1/descripcion",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones",
+								"1",
+								"descripcion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones?page=1&size=2 (O)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones?page=1&size=2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"canciones"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comentarios",
+			"item": [
+				{
+					"name": "/comentarios (J)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/comentarios",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/comentarios/:id (B)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/comentarios/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/comentarios/:id (B)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/comentarios/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "/token (O)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost/web2/web2-tpe-rest/api/token",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"web2",
+								"web2-tpe-rest",
+								"api",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

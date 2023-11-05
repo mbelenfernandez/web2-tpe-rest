@@ -30,6 +30,16 @@ class GeneroModel
         return $genero;
     }
 
+    function getGenerosOrderBy($field, $order)
+    {
+        $query = $this->db->prepare('SELECT * FROM genero ORDER BY ? ?');
+        $query->execute([$field, $order]);
+
+        $generos = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $generos;
+    }
+
     function insertGenero($descripcion)
     {
         $query = $this->db->prepare('INSERT INTO genero (descripcion) VALUES(?)');

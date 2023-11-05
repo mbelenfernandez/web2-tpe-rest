@@ -31,6 +31,43 @@ class CancionModel
         return $cancion;
     }
 
+    function getCancionesOrderBy($field, $order)
+    {
+        $query = $this->db->prepare('SELECT c.id_cancion, c.titulo, c.artista, c.duracion, c.letra, g.descripcion, g.id_genero FROM cancion c INNER JOIN genero g ON c.id_genero = g.id_genero order by ? ?;');
+        $query->execute([$field, $order]);
+
+        $canciones = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $canciones;
+    }
+
+    function getCancionByGenero($id_genero)
+    {
+        $query = $this->db->prepare('SELECT id_cancion, titulo, artista FROM cancion where id_genero=? order by id_cancion ASC');
+        $query->execute([$id_genero]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    function getCancionesFiltered($filter, $value)
+    {
+        $query = $this->db->prepare('SELECT c.id_cancion, c.titulo, c.artista, c.duracion, c.letra, g.descripcion, g.id_genero FROM cancion c INNER JOIN genero g ON c.id_genero = g.id_genero WHERE ? = ?;');
+        $query->execute([$filter, $value]);
+
+        $canciones = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $canciones;
+    }
+    
+    function getCancionesPaginated($page, $size)
+    {
+        $query = $this->db->prepare('SELECT c.id_cancion, c.titulo, c.artista, c.duracion, c.letra, g.descripcion, g.id_genero FROM cancion c INNER JOIN genero g ON c.id_genero = g.id_genero LIMIT ?, ?;');
+        $query->execute([$page, $size]);
+
+        $canciones = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $canciones;
+    }
+
     function insertCancion($titulo, $artista, $duracion, $letra, $id_genero)
     {
         $query = $this->db->prepare('INSERT INTO cancion (titulo, artista, duracion, letra, id_genero) VALUES(?,?,?,?,?)');
@@ -42,13 +79,6 @@ class CancionModel
     {
         $query = $this->db->prepare('DELETE FROM cancion WHERE id_cancion=?');
         $query->execute([$id]);
-    }
-
-    function getCancionByGenero($id_genero)
-    {
-        $query = $this->db->prepare('SELECT id_cancion, titulo, artista FROM cancion where id_genero=? order by id_cancion ASC');
-        $query->execute([$id_genero]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     function updateCancion($id, $titulo, $artista, $duracion, $id_genero)

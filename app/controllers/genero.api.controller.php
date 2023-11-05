@@ -20,7 +20,7 @@
                     if($params[':subrecurso']) {
                         switch ($params[':subrecurso']) {
                             case 'descripcion':
-                                $this->view->response($genero->descripcion, 200);
+                                $this->view->response($genero[0]->descripcion, 200);
                                 break;
                                 
                             default:
@@ -33,7 +33,7 @@
                         $this->view->response($genero, 200);
                 } else {
                     $this->view->response(
-                        'El género con el id='.$params[':ID'].' no existe.'
+                        'El género con el id '.$params[':ID'].' no existe.'
                         , 404);
                 }
             }
@@ -41,13 +41,13 @@
 
         function delete($params = []) {
             $id = $params[':ID'];
-            $tarea = $this->model->getGenero($id);
+            $genero = $this->model->getGenero($id);
 
-            if($tarea) {
+            if($genero) {
                 $this->model->deleteGenero($id);
-                $this->view->response('El género con id='.$id.' ha sido borrado.', 200);
+                $this->view->response('El género con id '.$id.' ha sido borrado.', 200);
             } else {
-                $this->view->response('El género con id='.$id.' no existe.', 404);
+                $this->view->response('El género con id '.$id.' no existe.', 404);
             }
         }
 
@@ -56,7 +56,7 @@
             $descripcion = $body->descripcion;
             $id = $this->model->insertGenero($descripcion);
 
-            $this->view->response('El género fue insertado con el id='.$id, 201);
+            $this->view->response('El género fue insertado con el id '.$id, 201);
         }
 
         function update($params = []) {
@@ -68,9 +68,9 @@
                 $descripcion = $body->descripcion;
                 $this->model->updateGenero($id, $descripcion);
 
-                $this->view->response('El género con id='.$id.' ha sido modificado.', 200);
+                $this->view->response('El género con id '.$id.' ha sido modificado.', 200);
             } else {
-                $this->view->response('El género con id='.$id.' no existe.', 404);
+                $this->view->response('El género con id '.$id.' no existe.', 404);
             }
         }
     }
