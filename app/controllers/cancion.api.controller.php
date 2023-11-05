@@ -1,15 +1,18 @@
 <?php
 require_once 'app/controllers/api.controller.php';
+require_once 'app/helpers/auth.api.helper.php';
 require_once 'app/models/cancion.model.php';
 
 class CancionApiController extends ApiController
 {
     private $model;
+    private $authHelper;
 
     function __construct()
     {
         parent::__construct();
         $this->model = new CancionModel();
+        $this->authHelper = new AuthHelper();
     }
 
     function get($params = [])
@@ -36,20 +39,31 @@ class CancionApiController extends ApiController
                             break;
                         default:
                             $this->view->response(
-                                'La canción no contiene ' . $params[':subrecurso'] . '.', 404);
+                                'La canción no contiene ' . $params[':subrecurso'] . '.',
+                                404
+                            );
                             break;
                     }
                 } else
                     $this->view->response($cancion, 200);
             } else {
                 $this->view->response(
-                    'La canción con el id ' . $params[':ID'] . ' no existe.', 404);
+                    'La canción con el id ' . $params[':ID'] . ' no existe.',
+                    404
+                );
             }
         }
     }
 
-    
-    function create($params = []) {
+
+    function create($params = [])
+    {
+
+        $user = $this->authHelper->currentUser();
+        if (!$user) {
+            $this->view->response('Unauthorized', 401);
+            return;
+        }
         $body = $this->getData();
         $titulo = $body->titulo;
         $artista = $body->artista;
@@ -59,14 +73,20 @@ class CancionApiController extends ApiController
 
         $id = $this->model->insertCancion($titulo, $artista, $duracion, $letra, $id_genero);
 
-        $this->view->response('La canción fue insertada con el id '.$id, 201);
+        $this->view->response('La canción fue insertada con el id ' . $id, 201);
     }
-    
-    function update($params = []) {
+
+    function update($params = [])
+    {
+        $user = $this->authHelper->currentUser();
+        if (!$user) {
+            $this->view->response('Unauthorized', 401);
+            return;
+        }
         $id = $params[':ID'];
         $cancion = $this->model->getCancionById($id);
 
-        if($cancion) {
+        if ($cancion) {
             $body = $this->getData();
             $titulo = $body->titulo;
             $artista = $body->artista;
@@ -74,9 +94,9 @@ class CancionApiController extends ApiController
             $duracion = $body->duracion;
             $id_genero = $body->id_genero;
             $this->model->updateCancion($id, $titulo, $artista, $letra, $duracion, $id_genero);
-            $this->view->response('El comentario con id '.$id.' ha sido modificado.', 200);
+            $this->view->response('El comentario con id ' . $id . ' ha sido modificado.', 200);
         } else {
-            $this->view->response('El comentario con id '.$id.' no existe.', 404);
+            $this->view->response('El comentario con id ' . $id . ' no existe.', 404);
         }
     }
 }

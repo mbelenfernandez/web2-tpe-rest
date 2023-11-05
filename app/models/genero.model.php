@@ -10,9 +10,9 @@ class GeneroModel
         $this->db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
     }
 
-    function getGeneros()
+    function getGeneros($order, $sort)
     {
-        $query = $this->db->prepare('SELECT * FROM genero');
+        $query = $this->db->prepare("SELECT * FROM genero ORDER BY $sort $order;");
         $query->execute();
 
         $generos = $query->fetchAll(PDO::FETCH_OBJ);
@@ -28,16 +28,6 @@ class GeneroModel
         $genero = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $genero;
-    }
-
-    function getGenerosOrderBy($field, $order)
-    {
-        $query = $this->db->prepare('SELECT * FROM genero ORDER BY ? ?');
-        $query->execute([$field, $order]);
-
-        $generos = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $generos;
     }
 
     function insertGenero($descripcion)

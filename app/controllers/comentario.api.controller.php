@@ -1,15 +1,18 @@
 <?php
 require_once 'app/controllers/api.controller.php';
+require_once 'app/helpers/auth.api.helper.php';
 require_once 'app/models/comentario.model.php';
 
 class ComentarioApiController extends ApiController
 {
     private $model;
+    private $authHelper;
 
     function __construct()
     {
         parent::__construct();
         $this->model = new ComentarioModel();
+        $this->authHelper = new AuthHelper();
     }
 
     function get($params = [])
@@ -54,8 +57,15 @@ class ComentarioApiController extends ApiController
         }
     }
 
-    
-    function create($params = []) {
+
+    function create($params = [])
+    {
+
+        $user = $this->authHelper->currentUser();
+        if (!$user) {
+            $this->view->response('Unauthorized', 401);
+            return;
+        }
         $body = $this->getData();
         $fecha = $body->fecha;
         $descripcion = $body->descripcion;
@@ -63,22 +73,28 @@ class ComentarioApiController extends ApiController
         $id_cancion = $body->id_cancion;
         $id = $this->model->insertComentario($fecha, $descripcion, $puntaje, $id_cancion);
 
-        $this->view->response('El comentario fue insertado con el id '.$id, 201);
+        $this->view->response('El comentario fue insertado con el id ' . $id, 201);
     }
-    
-    function update($params = []) {
+
+    function update($params = [])
+    {
+        $user = $this->authHelper->currentUser();
+        if (!$user) {
+            $this->view->response('Unauthorized', 401);
+            return;
+        }
         $id = $params[':ID'];
         $comentario = $this->model->getComentario($id);
 
-        if($comentario) {
+        if ($comentario) {
             $body = $this->getData();
             $fecha = $body->fecha;
             $descripcion = $body->descripcion;
             $puntaje = $body->puntaje;
             $this->model->updateComentario($id, $fecha, $descripcion, $puntaje);
-            $this->view->response('El comentario con id '.$id.' ha sido modificado.', 200);
+            $this->view->response('El comentario con id ' . $id . ' ha sido modificado.', 200);
         } else {
-            $this->view->response('El comentario con id '.$id.' no existe.', 404);
+            $this->view->response('El comentario con id ' . $id . ' no existe.', 404);
         }
     }
 }

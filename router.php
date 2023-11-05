@@ -4,6 +4,7 @@ require_once 'config.php';
 require_once 'app/controllers/genero.api.controller.php';
 require_once 'app/controllers/cancion.api.controller.php';
 require_once 'app/controllers/comentario.api.controller.php';
+require_once 'app/controllers/user.api.controller.php';
 
 $router = new Router();
 
@@ -28,4 +29,9 @@ $router->addRoute('comentarios/:ID', 'GET',    'ComentarioApiController', 'get')
 $router->addRoute('comentarios/:ID', 'PUT',    'ComentarioApiController', 'update');
 $router->addRoute('comentarios/:ID/:subrecurso', 'GET',    'ComentarioApiController', 'get');
 
+#token
+$router->addRoute('auth/token', 'GET', 'UserApiController', 'getToken'); 
+
 $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
+
+

@@ -1,13 +1,14 @@
 <?php
+    require_once 'app/models/model.php';
 
-class UserModel
+class UserModel extends Model
 {
-    private $db;
+    //private $db;
 
-    function __construct()
-    {
-        $this->db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
-    }
+   // function __construct()
+    //{
+        //$this->db = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASSWORD);
+    //}
 
     public function getByUsername($username)
     {
