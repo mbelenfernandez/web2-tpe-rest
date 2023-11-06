@@ -1,25 +1,28 @@
 {
 	"info": {
-		"_postman_id": "cc928e16-713d-4dd2-8d0d-7810cf0b0e0d",
+		"_postman_id": "4c1283c6-7cd0-4175-b3cd-30b6a5689138",
 		"name": "web2-tpe-rest",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30802359"
+		"_exporter_id": "30782816",
+		"_collection_link": "https://warped-crater-401975.postman.co/workspace/web2~30af50d5-1472-4c79-8dbb-f7af5452203d/collection/30782816-4c1283c6-7cd0-4175-b3cd-30b6a5689138?action=share&source=collection_link&creator=30782816"
 	},
 	"item": [
 		{
 			"name": "generos",
 			"item": [
 				{
-					"name": "/generos (J)",
+					"name": "/generos (J) ok",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/generos",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"generos"
 							]
@@ -33,11 +36,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/generos/?sort=descripcion&order=asc",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/?sort=descripcion&order=asc",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"generos",
 								""
@@ -57,23 +62,24 @@
 					"response": []
 				},
 				{
-					"name": "/generos (J)",
+					"name": "/generos (B) ok",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\r\n  \"descripcion\": \"Prueba\"\r\n}"
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/generos/1",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
-								"generos",
-								"1"
+								"generos"
 							]
 						}
 					},
@@ -85,11 +91,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/generos?pending=true",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos?pending=true",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"generos"
 							],
@@ -104,16 +112,18 @@
 					"response": []
 				},
 				{
-					"name": "/generos/:id (B)",
+					"name": "/generos/:id (B) ok",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}{/api/generos/4",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/4",
 							"host": [
-								"{{urlBase}}{"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"generos",
 								"4"
@@ -123,20 +133,22 @@
 					"response": []
 				},
 				{
-					"name": "/generos/:id (B)",
+					"name": "/generos/:id (J)",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "sajajsd\r\n"
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/generos/1",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/1",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"generos",
 								"1"
@@ -146,7 +158,7 @@
 					"response": []
 				},
 				{
-					"name": "/generos/:id/:subrecurso (O)",
+					"name": "/generos/:id/:subrecurso (O) ok",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -158,11 +170,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/generos/1/descripcion",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos/1/descripcion",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"generos",
 								"1",
@@ -185,11 +199,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/generos?page=1&size=2",
+							"raw": "localhost/web2/web2-tpe-rest/api/generos?page=1&size=2",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"generos"
 							],
@@ -213,16 +229,18 @@
 			"name": "canciones",
 			"item": [
 				{
-					"name": "/canciones (J)",
+					"name": "/canciones (J) ok",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/canciones",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"canciones"
 							]
@@ -236,11 +254,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/canciones/?sort=titulo&order=asc",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/?sort=titulo&order=asc",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"canciones",
 								""
@@ -260,23 +280,24 @@
 					"response": []
 				},
 				{
-					"name": "/canciones (J)",
+					"name": "/canciones (B) ok",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\r\n  \"titulo\": \"Prueba\",\r\n  \"artista\": \"Belu\",\r\n  \"duracion\": \"2:52\",\r\n  \"letra\": \"Lorem Ipsum blablablbabavasdadasd\",\r\n  \"id_genero\": \"1\"\r\n}"
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/canciones/1",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
-								"canciones",
-								"1"
+								"canciones"
 							]
 						}
 					},
@@ -288,11 +309,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/canciones?pending=true",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones?pending=true",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"canciones"
 							],
@@ -307,16 +330,18 @@
 					"response": []
 				},
 				{
-					"name": "/canciones/:id (B)",
+					"name": "/canciones/:id (B) ok",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/canciones/1",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"canciones",
 								"1"
@@ -326,20 +351,22 @@
 					"response": []
 				},
 				{
-					"name": "/canciones/:id (B)",
+					"name": "/canciones/:id (J)",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/canciones/1",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"canciones",
 								"1"
@@ -349,7 +376,7 @@
 					"response": []
 				},
 				{
-					"name": "/canciones/:id/:subrecurso (O)",
+					"name": "/canciones/:id/:subrecurso (O) ok",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -361,15 +388,17 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/canciones/1/descripcion",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones/1/titulo",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"canciones",
 								"1",
-								"descripcion"
+								"titulo"
 							]
 						}
 					},
@@ -388,11 +417,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/canciones?page=1&size=2",
+							"raw": "localhost/web2/web2-tpe-rest/api/canciones?page=1&size=2",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"canciones"
 							],
@@ -416,20 +447,32 @@
 			"name": "comentarios",
 			"item": [
 				{
-					"name": "/comentarios (J)",
+					"name": "/comentarios (B)",
 					"request": {
-						"method": "PUT",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\r\n  \"fecha\": \"2023-11-04 19:14:40\",\r\n  \"descripcion\": \"Belu está puntuando esta canción\",\r\n  \"puntaje\": \"2\",\r\n  \"id_cancion\": \"1\"\r\n}"
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/comentarios",
+							"raw": "localhost/web2/web2-tpe-rest/api/comentarios",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"comentarios"
 							]
@@ -443,11 +486,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{urlBase}}/api/comentarios/1",
+							"raw": "localhost/web2/web2-tpe-rest/api/comentarios/1",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"comentarios",
 								"1"
@@ -457,20 +502,32 @@
 					"response": []
 				},
 				{
-					"name": "/comentarios/:id (B)",
+					"name": "/comentarios/:id (J)",
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/comentarios/1",
+							"raw": "localhost/web2/web2-tpe-rest/api/comentarios/1",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
 								"comentarios",
 								"1"
@@ -486,10 +543,43 @@
 			"item": [
 				{
 					"name": "/token (O)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Obtén el contenido de la variable de entorno \"token\"\r",
+									"var tokenWithQuotes = pm.environment.get(\"token\");\r",
+									"\r",
+									"// Elimina las comillas de la cadena de texto\r",
+									"var tokenWithoutQuotes = tokenWithQuotes.replace(/\"/g, '');\r",
+									"\r",
+									"// Guarda el resultado en la misma variable de entorno \"token\"\r",
+									"pm.environment.set(\"token\", tokenWithoutQuotes);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "webadmin",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -497,12 +587,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{urlBase}}/api/token",
+							"raw": "localhost/web2/web2-tpe-rest/api/auth/token",
 							"host": [
-								"{{urlBase}}"
+								"localhost"
 							],
 							"path": [
+								"web2",
+								"web2-tpe-rest",
 								"api",
+								"auth",
 								"token"
 							]
 						}
