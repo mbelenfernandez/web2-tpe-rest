@@ -14,8 +14,7 @@
         }
 
         function getToken($params = []) {
-            $this->view->response('Hola', 200);
-            return;
+
             $basic = $this->authHelper->getAuthHeaders(); // Darnos el header 'Authorization:' 'Basic: base64(usr:pass)'
 
             if(empty($basic)) {
@@ -38,11 +37,13 @@
 
             $userdata = [ "name" => $user, "id" => 123, "role" => 'ADMIN' ]; // Llamar a la DB
 
-            if($user == "Nico" && $pass == "web") {
+            
+            if($user == "webadmin" && $pass == "admin") {
                 // Usuario es válido
-                
+                            
                 $token = $this->authHelper->createToken($userdata);
-                $this->view->response($token);
+                $this->view->response($token, 200);
+                return;
             } else {
                 $this->view->response('El usuario o contraseña son incorrectos.', 401);
             }
