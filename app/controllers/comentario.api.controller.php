@@ -97,4 +97,14 @@ class ComentarioApiController extends ApiController
             $this->view->response('El comentario con id ' . $id . ' no existe.', 404);
         }
     }
+
+    function filter($id_cancion = NULL)
+    {
+        if ($id_cancion) {
+            $comentarios = $this->model->getComentariosByCancion($id_cancion);
+            $this->view->response($comentarios, 200);
+        } else {
+            $this->view->response('El comentario con id ' . $id_cancion . ' no existe.', 404);
+        }
+    }
 }

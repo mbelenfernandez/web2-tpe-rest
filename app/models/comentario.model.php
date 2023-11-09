@@ -53,4 +53,11 @@ class ComentarioModel
         $query = $this->db->prepare('UPDATE comentario SET fecha=?, descripcion=?, puntaje=? WHERE id_comentario=?');
         $query->execute([$fecha, $descripcion, $puntaje, $id]);
     }
+
+    function getComentariosByCancion($id_cancion)
+    {
+        $query = $this->db->prepare('SELECT * FROM comentario where id_cancion=? order by id_comentario ASC');
+        $query->execute([$id_cancion]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
 }
