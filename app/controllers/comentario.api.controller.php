@@ -98,13 +98,18 @@ class ComentarioApiController extends ApiController
         }
     }
 
-    function filter($id_cancion = NULL)
+    function filter($params = [])
     {
-        if ($id_cancion) {
+        $id_cancion = $params[':ID'];
+        if (isset($id_cancion)) {
             $comentarios = $this->model->getComentariosByCancion($id_cancion);
-            $this->view->response($comentarios, 200);
+            if(!empty($comentarios)){
+                $this->view->response($comentarios, 200);
+            } else {
+                $this->view->response('La cancion con id ' . $id_cancion . ' no tiene ningun comentario asociado.', 200);
+            }   
         } else {
-            $this->view->response('El comentario con id ' . $id_cancion . ' no existe.', 404);
+            $this->view->response('La cancion con id ' . $id_cancion . ' no existe.', 404);
         }
     }
 }
