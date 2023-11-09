@@ -14,11 +14,11 @@
         }
 
         function getToken($params = []) {
-            $user = $this->authHelper->currentUser();
-            if(!$user){
-                $this->view->response('Unauthorized', 401);
-                return;
-            }
+            //$user = $this->authHelper->currentUser();
+            //if(!$user){
+              //  $this->view->response('Unauthorized', 401);
+                //return;
+           // }
 
             $basic = $this->authHelper->getAuthHeaders(); // Darnos el header 'Authorization:' 'Basic: base64(usr:pass)'
 
@@ -40,9 +40,11 @@
             $username = $userpass[0];
             $password = $userpass[1];
 
+            $user = $this->model->getByUsername($username);
+
             $userdata = [ "name" => $user, "id" => 123, "role" => 'ADMIN' ]; // Llamar a la DB
 
-            $user = $this->model->getByUsername($username);
+       
             if($user && password_verify($password, $user->password)) {
                 // Usuario es válido
                             

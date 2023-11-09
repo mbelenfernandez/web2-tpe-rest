@@ -18,8 +18,14 @@ class CancionApiController extends ApiController
     function get($params = [])
     {
         if (empty($params)) {
-            $canciones = $this->model->getCanciones();
-            $this->view->response($canciones, 200);
+            if (isset($_GET['size']) && (isset($_GET['page']))) {
+                $size = $_GET['size'];
+                $page = $_GET['page'];
+
+                $canciones = $this->model->getCancionesPaginated($page, $size);
+                $this->view->response($canciones, 200);
+                return;
+            }
         } else {
             $cancion = $this->model->getCancionById($params[':ID']);
             if (!empty($cancion)) {
@@ -46,11 +52,9 @@ class CancionApiController extends ApiController
                     }
                 } else
                     $this->view->response($cancion, 200);
+                    return;
             } else {
-                $this->view->response(
-                    'La canción con el id ' . $params[':ID'] . ' no existe.',
-                    404
-                );
+                $this->view->response('La canción con el id ' . $params[':ID'] . ' no existe.',404);
             }
         }
     }

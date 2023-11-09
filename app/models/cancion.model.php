@@ -60,8 +60,8 @@ class CancionModel
     
     function getCancionesPaginated($page, $size)
     {
-        $query = $this->db->prepare('SELECT c.id_cancion, c.titulo, c.artista, c.duracion, c.letra, g.descripcion, g.id_genero FROM cancion c INNER JOIN genero g ON c.id_genero = g.id_genero LIMIT ?, ?;');
-        $query->execute([$page, $size]);
+        $query = $this->db->prepare("SELECT c.id_cancion, c.titulo, c.artista, c.duracion, c.letra, g.descripcion, g.id_genero FROM cancion c INNER JOIN genero g ON c.id_genero = g.id_genero ORDER BY id_cancion ASC LIMIT $page, $size;");
+        $query->execute();
 
         $canciones = $query->fetchAll(PDO::FETCH_OBJ);
 
