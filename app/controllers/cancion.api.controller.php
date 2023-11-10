@@ -25,40 +25,22 @@ class CancionApiController extends ApiController
                 $canciones = $this->model->getCancionesPaginated($page, $size);
                 $this->view->response($canciones, 200);
                 return;
+            } else {
+                $canciones = $this->model->getCanciones();
+                $this->view->response($canciones, 200);
+                return;
             }
         } else {
             $cancion = $this->model->getCancionById($params[':ID']);
             if (!empty($cancion)) {
-                if ($params[':subrecurso']) {
-                    switch ($params[':subrecurso']) {
-                        case 'titulo':
-                            $this->view->response($cancion[0]->titulo, 200);
-                            break;
-                        case 'artista':
-                            $this->view->response($cancion[0]->artista, 200);
-                            break;
-                        case 'duracion':
-                            $this->view->response($cancion[0]->duracion, 200);
-                            break;
-                        case 'letra':
-                            $this->view->response($cancion[0]->letra, 200);
-                            break;
-                        default:
-                            $this->view->response(
-                                'La canción no contiene ' . $params[':subrecurso'] . '.',
-                                404
-                            );
-                            break;
-                    }
-                } else
-                    $this->view->response($cancion, 200);
-                    return;
+                $this->view->response($cancion, 200);
+                return;
             } else {
-                $this->view->response('La canción con el id ' . $params[':ID'] . ' no existe.',404);
+                $this->view->response('La canción con el id ' . $params[':ID'] . ' no existe.', 404);
+                return;
             }
         }
     }
-
 
     function create($params = [])
     {
@@ -78,6 +60,7 @@ class CancionApiController extends ApiController
         $id = $this->model->insertCancion($titulo, $artista, $duracion, $letra, $id_genero);
 
         $this->view->response('La canción fue insertada con el id ' . $id, 201);
+        return;
     }
 
     function update($params = [])
@@ -98,9 +81,11 @@ class CancionApiController extends ApiController
             $duracion = $body->duracion;
             $id_genero = $body->id_genero;
             $this->model->updateCancion($id, $titulo, $artista, $letra, $duracion, $id_genero);
-            $this->view->response('El comentario con id ' . $id . ' ha sido modificado.', 200);
+            $this->view->response('La canción con id ' . $id . ' ha sido modificada.', 200);
+            return;
         } else {
-            $this->view->response('El comentario con id ' . $id . ' no existe.', 404);
+            $this->view->response('La canción con id ' . $id . ' no existe.', 404);
+            return;
         }
     }
 }

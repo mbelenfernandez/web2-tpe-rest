@@ -1,0 +1,291 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de letras de canciones",
+    "version": "1.0.0",
+    "description": "API para gestionar géneros, canciones y comentarios de música.",
+    "contact": {
+      "name": "Julián González y Belén Fernández"
+    }
+  },
+  "paths": {
+    "/api/generos": {
+      "get": {
+        "summary": "Listar Géneros",
+        "description": "API para listar géneros indicando orden (asc o desc) y campo por el cual se ordena",
+        "responses": {
+          "200": {
+            "description": "Lista de géneros"
+          }
+        },
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Campo para ordenar"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Orden ascendente o descendente"
+          }
+        ]
+      }
+    },
+    "/api/generos/{id}": {
+      "get": {
+        "summary": "Obtener Género por ID",
+        "responses": {
+          "200": {
+            "description": "Datos del género"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del género"
+          }
+        ]
+      },
+      "put": {
+        "summary": "Actualizar Género por ID",
+        "responses": {
+          "200": {
+            "description": "Género actualizado"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del género"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "descripcion": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/canciones": {
+      "get": {
+        "summary": "Listar Canciones",
+        "description": "API para listar canciones paginando los resultados. Size --> indica el tamaño de la página / Page --> indica el primer registro del paginado (empezar en 0 e ir aumentando el valor sumándole el size)",
+        "responses": {
+          "200": {
+            "description": "Lista de canciones"
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Número de página"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Tamaño de página"
+          }
+        ]
+      }
+    },
+    "/api/canciones/{id}": {
+      "get": {
+        "summary": "Obtener Canción por ID",
+        "responses": {
+          "200": {
+            "description": "Datos de la canción"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID de la canción"
+          }
+        ]
+      },
+      "put": {
+        "summary": "Actualizar Canción por ID",
+        "responses": {
+          "200": {
+            "description": "Canción actualizada"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID de la canción"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "titulo": {
+                    "type": "string"
+                  },
+                  "artista": {
+                    "type": "string"
+                  },
+                  "duracion": {
+                    "type": "string"
+                  },
+                  "letra": {
+                    "type": "string"
+                  },
+                  "id_genero": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comentarios/{id}": {
+      "get": {
+        "summary": "Obtener Comentario por ID",
+        "responses": {
+          "200": {
+            "description": "Datos del comentario"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del comentario"
+          }
+        ]
+      },
+      "put": {
+        "summary": "Actualizar Comentario por ID",
+        "responses": {
+          "200": {
+            "description": "Comentario actualizado"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID del comentario"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha": {
+                    "type": "string"
+                  },
+                  "descripcion": {
+                    "type": "string"
+                  },
+                  "puntaje": {
+                    "type": "integer"
+                  },
+                  "id_cancion": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comentarios": {
+      "post": {
+        "summary": "Crear un Comentario",
+        "responses": {
+          "201": {
+            "description": "Comentario creado"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fecha": {
+                    "type": "string"
+                  },
+                  "descripcion": {
+                    "type": "string"
+                  },
+                  "puntaje": {
+                    "type": "integer"
+                  },
+                  "id_cancion": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

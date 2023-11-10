@@ -18,45 +18,20 @@ class ComentarioApiController extends ApiController
     function get($params = [])
     {
         if (empty($params)) {
-            $this->view->response(
-                'Se debe indicar un id canción',
-                404
-            );
+            $this->view->response('Se debe indicar un id canción', 404);
+            return;
         } else {
             $comentarios = $this->model->getComentariosByIdCancion($params[':ID']);
+
             if (!empty($comentarios)) {
-                if ($params[':subrecurso']) {
-                    switch ($params[':subrecurso']) {
-                        case 'titulo':
-                            $this->view->response($comentarios[0]->fecha, 200);
-                            break;
-                        case 'artista':
-                            $this->view->response($comentarios[0]->descripcion, 200);
-                            break;
-                        case 'duracion':
-                            $this->view->response($comentarios[0]->puntaje, 200);
-                            break;
-                        case 'letra':
-                            $this->view->response($comentarios[0]->id_cancion, 200);
-                            break;
-                        default:
-                            $this->view->response(
-                                'El comentario no contiene ' . $params[':subrecurso'] . '.',
-                                404
-                            );
-                            break;
-                    }
-                } else
                     $this->view->response($comentarios, 200);
+                    return;
             } else {
-                $this->view->response(
-                    'La canción con el id ' . $params[':ID'] . ' no existe.',
-                    404
-                );
+                $this->view->response('La canción con el id ' . $params[':ID'] . ' no existe.', 404);
+                return;
             }
         }
     }
-
 
     function create($params = [])
     {
@@ -72,8 +47,8 @@ class ComentarioApiController extends ApiController
         $puntaje = $body->puntaje;
         $id_cancion = $body->id_cancion;
         $id = $this->model->insertComentario($fecha, $descripcion, $puntaje, $id_cancion);
-
         $this->view->response('El comentario fue insertado con el id ' . $id, 201);
+        return;
     }
 
     function update($params = [])
@@ -93,23 +68,11 @@ class ComentarioApiController extends ApiController
             $puntaje = $body->puntaje;
             $this->model->updateComentario($id, $fecha, $descripcion, $puntaje);
             $this->view->response('El comentario con id ' . $id . ' ha sido modificado.', 200);
+            return;
         } else {
             $this->view->response('El comentario con id ' . $id . ' no existe.', 404);
+            return;
         }
     }
 
-    function filter($params = [])
-    {
-        $id_cancion = $params[':ID'];
-        if (isset($id_cancion)) {
-            $comentarios = $this->model->getComentariosByCancion($id_cancion);
-            if(!empty($comentarios)){
-                $this->view->response($comentarios, 200);
-            } else {
-                $this->view->response('La cancion con id ' . $id_cancion . ' no tiene ningun comentario asociado.', 200);
-            }   
-        } else {
-            $this->view->response('La cancion con id ' . $id_cancion . ' no existe.', 404);
-        }
-    }
 }

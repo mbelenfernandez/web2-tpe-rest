@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "4c1283c6-7cd0-4175-b3cd-30b6a5689138",
+		"name": "web2-tpe-rest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30782816",
+		"_collection_link": "https://warped-crater-401975.postman.co/workspace/web2~30af50d5-1472-4c79-8dbb-f7af5452203d/collection/30782816-4c1283c6-7cd0-4175-b3cd-30b6a5689138?action=share&source=collection_link&creator=30782816"
+	},
+	"item": [
+		{
+			"name": "generos",
+			"item": [
+				{
+					"name": "/generos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/generos",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"generos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos/?sort=descripcion&order=asc",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/generos/?sort=descripcion&order=asc",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"generos",
+								""
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "descripcion"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/generos/1",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"generos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descripcion\": \"Salsa\"\r\n}"
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/generos",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"generos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/generos/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"Rock & Roll\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/generos/1",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"generos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "canciones",
+			"item": [
+				{
+					"name": "/canciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/canciones",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"canciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/canciones/1",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"canciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones?page=1&size=2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/canciones?page=0&size=10",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"canciones"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"A las 9\",\r\n  \"artista\": \"No te va gustar\",\r\n  \"duracion\": \"2:52\",\r\n  \"letra\": \"Cómo que tienes que irte si recién te vi llegar solo me das en un rato lo que tenés para dar ...\",\r\n  \"id_genero\": \"1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/canciones",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"canciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/canciones/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"Baila Morena\",\r\n  \"artista\": \"Ozuna\",\r\n  \"duracion\": \"1:50\",\r\n  \"letra\": \"Prueba\",\r\n  \"id_genero\": \"1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/canciones/1",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"canciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comentarios",
+			"item": [
+				{
+					"name": "/comentarios/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlBase}}/api/comentarios/1",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"comentarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/comentarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fecha\": \"2023-11-04 19:14:40\",\r\n  \"descripcion\": \"Alguien está puntuando mal esta canción\",\r\n  \"puntaje\": \"2\",\r\n  \"id_cancion\": \"1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/comentarios",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/comentarios/:id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fecha\": \"2023-11-04 19:14:40\",\r\n  \"descripcion\": \"Alguien está puntuando mal esta canción\",\r\n  \"puntaje\": \"2\",\r\n  \"id_cancion\": \"1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/comentarios/10",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"comentarios",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "/token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Obtén el contenido de la respuesta\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Elimina las comillas del contenido\r",
+									"var tokenWithoutQuotes = responseText.replace(/\"/g, '');\r",
+									"\r",
+									"// Guarda el resultado en la variable de entorno \"token\"\r",
+									"pm.environment.set(\"token\", tokenWithoutQuotes);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "webadmin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{urlBase}}/api/auth/token",
+							"host": [
+								"{{urlBase}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -31,16 +31,6 @@ class ComentarioModel
         return $comentarios;
     }
 
-    function getComentariosOrderBy($id, $field, $order)
-    {
-        $query = $this->db->prepare('SELECT * FROM comentario c WHERE c.id_cancion = ? order by ? ?');;
-        $query->execute([$id, $field, $order]);
-
-        $comentarios = $query->fetchAll(PDO::FETCH_OBJ);
-
-        return $comentarios;
-    }
-  
     function insertComentario($fecha, $descripcion, $puntaje, $id_cancion)
     {
         $query = $this->db->prepare('INSERT INTO comentario (fecha, descripcion, puntaje, id_cancion) VALUES(?,?,?,?)');
@@ -52,12 +42,5 @@ class ComentarioModel
     {
         $query = $this->db->prepare('UPDATE comentario SET fecha=?, descripcion=?, puntaje=? WHERE id_comentario=?');
         $query->execute([$fecha, $descripcion, $puntaje, $id]);
-    }
-
-    function getComentariosByCancion($id_cancion)
-    {
-        $query = $this->db->prepare('SELECT * FROM comentario where id_cancion=? order by id_comentario ASC');
-        $query->execute([$id_cancion]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 }

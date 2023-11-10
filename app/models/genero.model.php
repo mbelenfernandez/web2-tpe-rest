@@ -37,12 +37,6 @@ class GeneroModel
         return $this->db->lastInsertId();
     }
 
-    function deleteGenero($id)
-    {
-        $query = $this->db->prepare('DELETE FROM genero WHERE id_genero=?');
-        $query->execute([$id]);
-    }
-
     function updateGenero($id, $descripcion)
     {
         $query = $this->db->prepare('UPDATE genero SET descripcion=? WHERE id_genero=?');
