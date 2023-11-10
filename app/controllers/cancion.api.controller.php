@@ -22,6 +22,10 @@ class CancionApiController extends ApiController
                 $size = $_GET['size'];
                 $page = $_GET['page'];
 
+                if ($page!=0) { 
+                    $page = $page*$size; 
+                }
+
                 $canciones = $this->model->getCancionesPaginated($page, $size);
                 $this->view->response($canciones, 200);
                 return;

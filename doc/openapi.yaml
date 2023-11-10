@@ -1,0 +1,257 @@
+openapi: 3.0.0
+info:
+  title: API de letras de canciones
+  version: 1.0.0
+  description: API para gestionar géneros, canciones y comentarios de música.
+  contact:
+    email: juliangonzalez122546@gmail.com
+    name: Julián González y Belén Fernández
+    url: https://github.com/mbelenfernandez/web2-tpe-rest
+tags:
+  - name: Generos
+    description: Operaciones relacionadas con géneros de música.
+  - name: Canciones
+    description: Operaciones relacionadas con canciones de música.
+  - name: Comentarios
+    description: Operaciones relacionadas con comentarios de música.
+  - name: Token
+    description: Operaciones relacionadas con la autenticación y obtención de tokens.
+servers:
+  - url: '{{urlBase}}'
+    variables: {}
+paths:
+  /api/generos:
+    get:
+      tags:
+        - Generos
+      summary: Listar Géneros
+      description: API para listar géneros indicando orden (asc o desc) y campo por el cual
+        se ordena (puede ser id_genero o descripcion)
+      responses:
+        '200':
+          description: Lista de géneros
+      parameters:
+        - name: sort
+          in: query
+          schema:
+            type: string
+          description: Campo para ordenar
+        - name: order
+          in: query
+          schema:
+            type: string
+          description: Orden ascendente o descendente
+  /api/generos/{id}:
+    get:
+      tags:
+        - Generos
+      summary: Obtener Género por ID
+      description: API para listar géneros por id_género
+      responses:
+        '200':
+          description: Datos del género
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del género
+    put:
+      tags:
+        - Generos
+      summary: Actualizar Género por ID
+      description: API para actualizar la descripción de un género por su id_genero
+      responses:
+        '200':
+          description: Género actualizado
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del género
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descripcion:
+                  type: string
+  /api/canciones:
+    get:
+      tags:
+        - Canciones
+      summary: Listar Canciones
+      description: >-
+        API para listar canciones paginando los resultados. Size --> indica el
+        tamaño de la página / Page --> indica la página que quiero traer (desde
+        0 hasta n)
+      responses:
+        '200':
+          description: Lista de canciones
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          description: Número de página
+        - name: size
+          in: query
+          schema:
+            type: integer
+          description: Tamaño de página
+  /api/canciones/{id}:
+    get:
+      tags:
+        - Canciones
+      summary: Obtener Canción por ID
+      description: Api para listar una canción por su id_cancion
+      responses:
+        '200':
+          description: Datos de la canción
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID de la canción
+    put:
+      tags:
+        - Canciones
+      summary: Actualizar Canción por ID
+      description: >-
+        Api para actualizar una canción por su id_cancion. Se deben mandar todos
+        los campos en el body
+      responses:
+        '200':
+          description: Canción actualizada
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID de la canción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titulo:
+                  type: string
+                artista:
+                  type: string
+                duracion:
+                  type: string
+                letra:
+                  type: string
+                id_genero:
+                  type: integer
+  /api/comentarios/{id}:
+    get:
+      tags:
+        - Comentarios
+      summary: Obtener Comentario por id_cancion
+      description: Api para listar comentarios por id_cancion
+      responses:
+        '200':
+          description: Datos del comentario
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del comentario
+    put:
+      tags:
+        - Comentarios
+      summary: Actualizar Comentario por ID
+      description: Api para crear actualizar un comentario específico por su id.
+      responses:
+        '200':
+          description: Comentario actualizado
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del comentario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fecha:
+                  type: string
+                descripcion:
+                  type: string
+                puntaje:
+                  type: integer
+                id_cancion:
+                  type: integer
+  /api/comentarios:
+    post:
+      tags:
+        - Comentarios
+      summary: Crear un Comentario
+      description: Api para crear comentarios en una canción.
+      responses:
+        '201':
+          description: Comentario creado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fecha:
+                  type: string
+                descripcion:
+                  type: string
+                puntaje:
+                  type: integer
+                id_cancion:
+                  type: integer
+  /api/auth/token:
+    get:
+      summary: Obtener Token de Autenticación
+      description: >-
+        Api para obtener token de autenticación utilizado en las apis de tipo
+        POST y PUT. Se deben enviar por authorization el usuario y contraseña
+        que serán utilizados para generar el token.
+      tags:
+        - Token
+      parameters:
+        - name: username
+          in: query
+          description: Nombre de usuario para autenticación básica.
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Contraseña para autenticación básica.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Token de autenticación
+          content:
+            application/json:
+              example:
+                token: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjp7ImlkX3VzdWFyaW8iOjIsInVzZXJuYW1lIjoid2ViYWRtaW4iLCJwYXNzd29yZCI6IiQyeSQxMCRDRmJ5RDI2d2xULlkxS2pRaG5PM0l1bVRTR1ZPMk5CM2RYNk40V3pWQmVPWVRlYnlHdDFnZSJ9LCJpZCI6MTIzLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2OTk2NjI2OTh9.J9_3mEXsuMDL-5oVTbv4vmr_AbVO6l1181qUQ-v9GsA
+
