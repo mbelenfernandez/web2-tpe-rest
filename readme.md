@@ -17,6 +17,21 @@ API para gestionar géneros, canciones y comentarios de música.
 
 ## Endpoints
 
+### Listar Géneros ordenados
+
+**Descripción:**
+La API `/api/generos` se utiliza para obtener una lista ordenada de géneros musicales, permitiendo especificar el campo por el cual se ordena (`sort`) y el tipo de ordenamiento (`order`).
+
+**Método HTTP:** `GET`
+
+**Parámetros de la Consulta:**
+- `sort`: campo por el cual se ordena (puede ser id_genero o descripcion).
+- `order`: tipo de orden (asc o desc)
+**Respuestas:**
+- `200 OK`: La solicitud fue exitosa, y la respuesta contiene la lista de géneros ordenados.
+
+---
+
 ### Obtener Género por ID
 
 **Descripción:**
@@ -44,6 +59,18 @@ La API `/api/generos/{id}` posibilita la actualización de la descripción de un
 
 **Respuestas:**
 - `200 OK`: La solicitud de actualización fue exitosa, y la respuesta contiene los detalles del género actualizado.
+
+---
+
+### Crear un Género
+
+**Descripción:**
+La API `/api/generos` permite crear nuevos géneros musicales. Se deben proporcionar los datos del comentario en el cuerpo de la solicitud.
+
+**Método HTTP:** `POST`
+
+**Respuestas:**
+- `201 Created`: La solicitud de creación fue exitosa, y la respuesta contiene los detalles del nuevo género.
 
 ---
 
@@ -93,10 +120,22 @@ La API `/api/canciones/{id}` posibilita la actualización de los datos de una ca
 
 ---
 
-### Obtener Comentario por ID
+### Crear una Canción
 
 **Descripción:**
-La API `/api/comentarios/{id}` permite obtener información detallada de un comentario específico mediante su `id_comentario`.
+La API `/api/cancion` permite crear nuevas canciones. Se deben proporcionar los datos del comentario en el cuerpo de la solicitud.
+
+**Método HTTP:** `POST`
+
+**Respuestas:**
+- `201 Created`: La solicitud de creación fue exitosa, y la respuesta contiene los detalles del nuevo género.
+
+---
+
+### Obtener Comentario por ID cancion
+
+**Descripción:**
+La API `/api/comentarios/{id}` permite obtener los comentarios de una canción mediante un`id_cancion`.
 
 **Método HTTP:** `GET`
 
@@ -126,7 +165,7 @@ La API `/api/comentarios/{id}` posibilita la actualización de un comentario esp
 ### Crear un Comentario
 
 **Descripción:**
-La API `/api/comentarios` permite crear nuevos comentarios asociados a una canción. Se deben proporcionar los datos del comentario en el cuerpo de la solicitud.
+La API `/api/comentarios` permite crear nuevos comentarios asociados a una canción mediante su id_cancion. Se deben proporcionar los datos del comentario en el cuerpo de la solicitud.
 
 **Método HTTP:** `POST`
 
