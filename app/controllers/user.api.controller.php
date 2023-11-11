@@ -14,45 +14,38 @@
         }
 
         function getToken($params = []) {
-            //$user = $this->authHelper->currentUser();
-            //if(!$user){
-              //  $this->view->response('Unauthorized', 401);
-                //return;
-           // }
-
-            $basic = $this->authHelper->getAuthHeaders(); // Darnos el header 'Authorization:' 'Basic: base64(usr:pass)'
+            $basic = $this->authHelper->getAuthHeaders();
 
             if(empty($basic)) {
                 $this->view->response('No envió encabezados de autenticación.', 401);
                 return;
             }
 
-            $basic = explode(" ", $basic); // ["Basic", "base64(usr:pass)"]
+            $basic = explode(" ", $basic);
 
             if($basic[0]!="Basic") {
                 $this->view->response('Los encabezados de autenticación son incorrectos.', 401);
                 return;
             }
 
-            $userpass = base64_decode($basic[1]); // usr:pass
-            $userpass = explode(":", $userpass); // ["usr", "pass"]
+            $userpass = base64_decode($basic[1]);
+            $userpass = explode(":", $userpass); 
 
             $username = $userpass[0];
             $password = $userpass[1];
 
             $user = $this->model->getByUsername($username);
 
-            $userdata = [ "name" => $user, "id" => 123, "role" => 'ADMIN' ]; // Llamar a la DB
-
+            $userdata = [ "name" => $user];
        
             if($user && password_verify($password, $user->password)) {
-                // Usuario es válido
                             
                 $token = $this->authHelper->createToken($userdata);
                 $this->view->response($token, 200);
                 return;
             } else {
                 $this->view->response('El usuario o contraseña son incorrectos.', 401);
+                return;
             }
         }
     }

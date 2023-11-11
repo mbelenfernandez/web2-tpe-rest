@@ -25,7 +25,6 @@ $router->addRoute('comentarios',     'GET',    'ComentarioApiController', 'get')
 $router->addRoute('comentarios',     'POST',   'ComentarioApiController', 'create');
 $router->addRoute('comentarios/:ID', 'GET',    'ComentarioApiController', 'get');
 $router->addRoute('comentarios/:ID', 'PUT',    'ComentarioApiController', 'update');
-$router->addRoute('comentario/:ID', 'GET',    'ComentarioApiController', 'filter');
 
 #token
 $router->addRoute('auth/token', 'GET', 'UserApiController', 'getToken'); 
